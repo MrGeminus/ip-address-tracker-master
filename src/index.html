@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Specifies the character encoding for the HTML document -->
+  <meta charset="UTF-8">
+  <!-- Specifies the name of the author of the document -->
+  <meta name="author" content="MrGeminus">
+  <!-- Specifies a brief description of the page shown in search engine results -->
+  <meta name="description" content="The solution to the IP address tracker challenge on Frontend Mentor">
+  <!-- Specifies list of keywords relevant to the page -->
+  <meta name="keywords"
+    content="HTML5, Accessibility, BEM, Mobile-first, Front-End, IP Address Tracker Challenge, Frontend Mentor Challenge">
+  <!-- Displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Determines how the website is going to be embedded into other websites -->
+  <meta property="og:url" content="https://mrgeminus.github.io/ip-address-tracker-master/">
+  <meta property="og:title" content="Frontend Mentor | IP Address Tracker">
+  <meta property="og:description" content="The solution to the IP address tracker challenge on Frontend Mentor">
+  <!--<meta property="og:image" content="preview.png?raw=true">-->
+  <!-- Sets the favicon shown in the page's tab-->
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="assets/img/favicon.svg">
+  <!-- Leaflet CSS CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin="" />
+  <!-- Imports custom stylesheet -->
+  <link rel="stylesheet" href="scss/style.scss">
+  <!-- Difines the title of the document shown in the browser's title bar, page's tab, search engine results, etc. -->
+  <title>Frontend Mentor | IP Address Tracker</title>
+</head>
+
+<body>
+  <div class="page">
+    <main class="page__main">
+      <header class="page__header">
+        <h1 class="page__title">IP Address Tracker</h1>
+        <form class="search-form" data-search-form>
+          <div class="search-form__input-group">
+            <label class="visually-hidden" for="search-input">Search for any IP address or domain:</label>
+            <input id="search-input" class="search-form__input" type="search" name="query"
+              placeholder="Search for any IP address or domain" data-search-input aria-invalid="false"
+              aria-errormessage="error-message">
+            <button class="button search-form__button" type="submit"><span
+                class="visually-hidden">Search</span></button>
+          </div>
+          <p id="error-message" class="search-form__error search-form__error--is-hidden" data-input-error
+            aria-live="off"></p>
+        </form>
+      </header>
+      <section class="page__search-results">
+        <h2 class="visually-hidden">Search results</h2>
+        <div class="page__details-result">
+          <dl class="details-list" aria-live="polite">
+            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+              <dt class="details-list__item-name">IP Address</dt>
+              <dd class="details-list__item-value" data-output="ipAddress"></dd>
+            </div>
+            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+              <dt class="details-list__item-name">Location</dt>
+              <dd class="details-list__item-value" data-output="location"></dd>
+            </div>
+            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+              <dt class="details-list__item-name">Timezone</dt>
+              <dd class="details-list__item-value" data-output="timezone"></dd>
+            </div>
+            <div class="details-list__item">
+              <dt class="details-list__item-name">ISP</dt>
+              <dd class="details-list__item-value" data-output="isp"></dd>
+            </div>
+          </dl>
+        </div>
+        <div id="map" class="page__map-result"></div>
+      </section>
+    </main>
+    <footer class="page__footer">
+      <p class="page__footer-paragraph">Challenge by <a class="page__footer-link"
+          href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer external">Frontend
+          Mentor</a>. Coded by <a class="page__footer-link" href="https://mrgeminus.com/" target="_blank"
+          rel="noopener noreferrer author external">MrGeminus</a>.</p>
+    </footer>
+  </div>
+  <!-- Imports custom script -->
+  <script type="module" src="ts/script.ts"></script>
+  <noscript>Please enable JavaScript!</noscript>
+</body>

@@ -1,0 +1,41 @@
+{
+  "name": "ip-address-tracker-master",
+  "version": "1.0.0",
+  "description": "This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "dev": "netlify dev",
+    "build": "parcel build src/index.html"
+  },
+  "keywords": [
+    "HTML",
+    "Accessibility",
+    "Scss",
+    "TypeScript",
+    "ESLint",
+    "Leaflet",
+    "Axios",
+    "Parcel",
+    "Ip address tracker",
+    "Frontend Mentor"
+  ],
+  "author": "MrGeminus",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.2",
+    "@types/geojson": "^7946.0.8",
+    "@types/leaflet": "^1.7.11",
+    "@types/node": "^18.6.1",
+    "netlify-cli": "^10.11.2",
+    "parcel": "^2.6.2",
+    "process": "^0.11.10",
+    "sass": "^1.42.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@netlify/functions": "^1.0.0",
+    "axios": "^0.22.0",
+    "leaflet": "^1.8.0"
+  }
+}

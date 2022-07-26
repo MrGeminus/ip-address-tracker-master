@@ -1,0 +1,88 @@
+@use '../abstracts/mixins' as m;
+@use '../abstracts/colors' as c;
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &__header {
+        height: 18.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1.5rem;
+        background-image: url(../assets/img/pattern-bg.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include m.breakpoint(large) {
+            height: 13.5rem;
+        }
+    }
+
+    &__title {
+        margin-top: 1.5rem;
+        color: c.$primary-color;
+        font-size: 1.5rem;
+        font-weight: 500;
+        font-family: 'Rubik';
+        text-align: center;
+    }
+
+    &__search-results {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        flex-grow: 1;
+    }
+
+    &__details-result {
+        position: absolute;
+        top: -9.1rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        padding: 0 1.5rem;
+        z-index: 2;
+
+        @include m.breakpoint(large) {
+            top: -3.37rem;
+        }
+    }
+
+    &__map-result {
+        grid-row: 1 / span 12;
+        grid-column: 1 / span 12;
+        z-index: 1;
+    }
+
+    &__footer {
+        padding: 1rem;
+        color: c.$primary-color;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: 'Rubik';
+        text-align: center;
+        background-image: url(../assets/img/pattern-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include m.breakpoint(small) {
+            padding: 1rem 1rem;
+        }
+    }
+
+    &__footer-link {
+        color: c.$primary-color;
+    }
+}

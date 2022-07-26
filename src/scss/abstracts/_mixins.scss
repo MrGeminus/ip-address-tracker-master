@@ -1,0 +1,7 @@
+@use '../abstracts/breakpoints' as b;
+
+@mixin breakpoint($value) {
+    @media (min-width: map-get(b.$breakpoints, $value)) {
+        @content;
+    }
+}

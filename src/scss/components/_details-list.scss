@@ -1,0 +1,72 @@
+@use '../abstracts/mixins' as m;
+@use '../abstracts/colors' as c;
+
+.details-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 70rem;
+    padding: 1.5rem 0;
+    border-radius: 0.7rem;
+    text-align: center;
+    background-color: c.$primary-color;
+
+    @include m.breakpoint(large) {
+        flex-direction: row;
+        padding: 1.9rem 0;
+        text-align: left;
+    }
+
+    &__item {
+        flex-basis: 100%;
+        padding: 0rem 1.5rem;
+
+        @include m.breakpoint(large) {
+            flex-grow: 1;
+            margin-top: -0.45rem;
+        }
+    }
+
+    &__item--has-padding-bottom {
+        padding-bottom: 1.5rem;
+
+        @include m.breakpoint(large) {
+            padding-bottom: 0rem;
+        }
+    }
+
+    &__item--has-right-border {
+
+        @include m.breakpoint(large) {
+            border-right: 0.1rem solid lighten($color: c.$secondary-color, $amount: 29%);
+            ;
+        }
+    }
+
+    &__item-name {
+        margin-top: 0rem;
+        color: c.$secondary-color;
+        font-size: 0.7rem;
+        font-weight: 500;
+        font-family: 'Rubik';
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+
+        @include m.breakpoint(large) {
+            margin-top: -0.45rem;
+        }
+    }
+
+    &__item-value {
+        min-height: 1.15rem;
+        margin-top: 0.5rem;
+        font-size: 1.15rem;
+        font-weight: 500;
+        font-family: 'Rubik';
+
+        @include m.breakpoint(large) {
+            min-height: 2.3rem;
+            margin-top: 0.7rem;
+        }
+    }
+}
