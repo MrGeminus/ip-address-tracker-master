@@ -2,6 +2,8 @@
 .env
 .vscode
 .parcel-cache
+.netlify
+style-guide.md
 node_modules
 design
 dist

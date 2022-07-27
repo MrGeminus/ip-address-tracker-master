@@ -1,27 +1,42 @@
 {
   "name": "ip-address-tracker-master",
   "version": "1.0.0",
-  "description": "This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+  "author": {
+    "name": "MrGeminus",
+    "email": "contact@mrgeminus.com",
+    "url": "http://mrgeminus.com/"
+  },
+  "description": "This is a solution to the IP address tracker challenge on Frontend Mentor.",
+  "keywords": [
+    "HTML",
+    "Accessibility",
+    "BEM",
+    "SCSS",
+    "Mobile-first",
+    "TypeScript",
+    "Leaflet",
+    "Ipify",
+    "Axios",
+    "Parcel",
+    "Netlify",
+    "Ip address tracker",
+    "Frontend Mentor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrGeminus/ip-address-tracker-master.git"
+  },
+  "homepage": "https://github.com/MrGeminus/ip-address-tracker-master#readme",
+  "bugs": {
+    "url": "https://github.com/MrGeminus/ip-address-tracker-master/issues",
+    "email": "support@mrgeminus.com"
+  },
   "source": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html",
     "dev": "netlify dev",
     "build": "parcel build src/index.html"
   },
-  "keywords": [
-    "HTML",
-    "Accessibility",
-    "Scss",
-    "TypeScript",
-    "ESLint",
-    "Leaflet",
-    "Axios",
-    "Parcel",
-    "Ip address tracker",
-    "Frontend Mentor"
-  ],
-  "author": "MrGeminus",
-  "license": "MIT",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.2",
     "@types/geojson": "^7946.0.8",
@@ -37,5 +52,16 @@
     "@netlify/functions": "^1.0.0",
     "axios": "^0.22.0",
     "leaflet": "^1.8.0"
-  }
+  },
+  "license": "MIT",
+  "funding": [
+    {
+      "type": "Buy Me A Coffee",
+      "url": "https://www.buymeacoffee.com/mrgeminus"
+    },
+    {
+      "type": "Subscribe Star",
+      "url": "https://www.subscribestar.com/mrgeminus"
+    }
+  ]
 }

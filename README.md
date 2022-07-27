@@ -28,22 +28,28 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Preview image](./screenshots/preview.png?raw=true)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/MrGeminus/ip-address-tracker-master](https://github.com/MrGeminus/ip-address-tracker-master)
+- Live Site URL: [https://mrgeminus-ip-address-tracker-master.netlify.app/](https://mrgeminus-ip-address-tracker-master.netlify.app/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
+- Accessibility
+- BEM
 - SCSS
 - Mobile-first workflow
 - TypeScript
+- Leaflet
+- Ipify
+- Axios
 - Parcel
+- Netlify
 
 ### What I learned
 
@@ -74,4 +80,5 @@ const proudOfThisFunc = () => {
 
 - Website - [MrGeminus](https://mrgeminus.com/)
 - Frontend Mentor - [@MrGeminus](https://www.frontendmentor.io/profile/MrGeminus)
+- YouTube - [MrGeminus](https://www.youtube.com/channel/UC4QYa0Pb5OCidee70BWbtAA)
 - Twitter - [@MrGeminus](https://twitter.com/MrGeminus)
