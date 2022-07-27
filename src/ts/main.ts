@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json', {
             headers: {
-                'Access-Control-Allow-Origin': 'https://mrgeminus-ip-address-tracker-master.netlify.app/'
+                'Access-Control-Allow-Origin': '*'
             }
         });
         getUserLocation(`ipAddress=${data.ip}`)
