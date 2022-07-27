@@ -104,11 +104,7 @@ searchInput.addEventListener('keydown', removeInvalidStyles);
 // Show the user's IP address on the initial page load
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json', {
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            }
-        });
+        const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json');
         getUserLocation(`ipAddress=${data.ip}`)
     }
     catch (error) {
