@@ -1,7 +1,7 @@
 // Importing libraries and interfaces
 import * as L from 'leaflet';
 import axios, { AxiosResponse } from 'axios';
-import { IpifyResponse } from './interfaces';
+import { IpifyDetailedResponse, IpifySimpleResponse } from './interfaces';
 
 // Selecting necessary elements from the DOM
 const searchForm = document.querySelector('[data-search-form]') as HTMLFormElement;
@@ -36,7 +36,7 @@ mapTiles.addTo(map);
 // Function that gets the location and displays it
 const getUserLocation = async (query: string): Promise<void> => {
     try {
-        const { data }: AxiosResponse<IpifyResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
+        const { data }: AxiosResponse<IpifyDetailedResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
         // Using the flyTo method to animate to the targeted location
         console.log(data);
         map.flyTo([data.location.lat, data.location.lng], 16);
@@ -102,6 +102,14 @@ const getSearchInputValue = (e: Event): void => {
 searchForm.addEventListener('submit', getSearchInputValue);
 // Listening for the key press event on the search input
 searchInput.addEventListener('keydown', removeInvalidStyles);
-// On page load, get the user's location by leaving ipAddress parameter empty
-document.addEventListener('DOMContentLoaded', () => getUserLocation('ipAddress='));
+// Show the user's IP address on the initial page load
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const { data }: AxiosResponse<IpifySimpleResponse> = await axios('http://api.ipify.org/?format=json');
+        getUserLocation(`ipAddress=${data.ip}`)
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
 

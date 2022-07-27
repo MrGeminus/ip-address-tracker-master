@@ -1,4 +1,4 @@
-export interface IpifyResponse {
+export interface IpifyDetailedResponse {
     ip: string,
     location: {
         country: string,
@@ -19,4 +19,8 @@ export interface IpifyResponse {
         type: string
     },
     isp: string
+}
+
+export interface IpifySimpleResponse {
+    ip: string
 }

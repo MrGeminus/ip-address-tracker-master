@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { Handler } from "@netlify/functions";
-import { IpifyResponse } from '../src/ts/interfaces';
+import { IpifyDetailedResponse } from '../src/ts/interfaces';
 
 const handler: Handler = async (event, context) => {
     const query = event.queryStringParameters?.query;
@@ -8,7 +8,7 @@ const handler: Handler = async (event, context) => {
     const url: string = `https://geo.ipify.org/api/v2/country,city?apiKey=${IPIFY_ACCESS_TOKEN}&${query}`;
     console.log(url);
     try {
-        const { data }: AxiosResponse<IpifyResponse> = await axios(url)
+        const { data }: AxiosResponse<IpifyDetailedResponse> = await axios(url)
         return {
             statusCode: 200,
             body: JSON.stringify(data)
