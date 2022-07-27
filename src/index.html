@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://mrgeminus.github.io/ip-address-tracker-master/">
   <meta property="og:title" content="Frontend Mentor | IP Address Tracker">
   <meta property="og:description" content="The solution to the IP address tracker challenge on Frontend Mentor">
-  <!--<meta property="og:image" content="preview.png?raw=true">-->
+  <meta property="og:image" content="assets/img/preview.png">
   <!-- Sets the favicon shown in the page's tab-->
   <link rel="icon" type="image/svg+xml" sizes="32x32" href="assets/img/favicon.svg">
   <!-- Leaflet CSS CDN -->
@@ -25,62 +25,77 @@
     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
     crossorigin="" />
   <!-- Imports custom stylesheet -->
-  <link rel="stylesheet" href="scss/style.scss">
+  <link rel="stylesheet" href="scss/main.scss">
   <!-- Difines the title of the document shown in the browser's title bar, page's tab, search engine results, etc. -->
   <title>Frontend Mentor | IP Address Tracker</title>
 </head>
 
 <body>
   <div class="page">
-    <main class="page__main">
-      <header class="page__header">
-        <h1 class="page__title">IP Address Tracker</h1>
-        <form class="search-form" data-search-form>
-          <div class="search-form__input-group">
-            <label class="visually-hidden" for="search-input">Search for any IP address or domain:</label>
-            <input id="search-input" class="search-form__input" type="search" name="query"
-              placeholder="Search for any IP address or domain" data-search-input aria-invalid="false"
-              aria-errormessage="error-message">
-            <button class="button search-form__button" type="submit"><span
-                class="visually-hidden">Search</span></button>
-          </div>
-          <p id="error-message" class="search-form__error search-form__error--is-hidden" data-input-error
-            aria-live="off"></p>
-        </form>
-      </header>
-      <section class="page__search-results">
-        <h2 class="visually-hidden">Search results</h2>
-        <div class="page__details-result">
-          <dl class="details-list" aria-live="polite">
-            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-              <dt class="details-list__item-name">IP Address</dt>
-              <dd class="details-list__item-value" data-output="ipAddress"></dd>
-            </div>
-            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-              <dt class="details-list__item-name">Location</dt>
-              <dd class="details-list__item-value" data-output="location"></dd>
-            </div>
-            <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-              <dt class="details-list__item-name">Timezone</dt>
-              <dd class="details-list__item-value" data-output="timezone"></dd>
-            </div>
-            <div class="details-list__item">
-              <dt class="details-list__item-name">ISP</dt>
-              <dd class="details-list__item-value" data-output="isp"></dd>
-            </div>
-          </dl>
+    <!-- Header content starts here -->
+    <header class="page__header">
+      <!-- Site heading -->
+      <h1 class="page__title">IP Address Tracker</h1>
+      <!-- Search form starts here -->
+      <form class="search-form" data-search-form>
+        <div class="search-form__input-group">
+          <label class="visually-hidden" for="search-input">Search for any IP address or domain:</label>
+          <!-- Search input -->
+          <input id="search-input" class="search-form__input" type="search" name="search"
+            placeholder="Search for any IP address or domain" data-search-input aria-invalid="false"
+            aria-errormessage="error-message">
+          <!-- Search button -->
+          <button class="button search-form__button" type="submit"><span class="visually-hidden">Search</span></button>
         </div>
-        <div id="map" class="page__map-result"></div>
-      </section>
+        <!-- Error messages about invalid entries are displayed here -->
+        <p id="error-message" class="search-form__error search-form__error--is-hidden" data-input-error aria-live="off">
+        </p>
+      </form>
+      <!-- Search form ends here -->
+    </header>
+    <!-- Header content ends here -->
+    <!-- Main content starts here -->
+    <main class="page__main">
+      <!-- Site subheading -->
+      <h2 class="visually-hidden">Search results</h2>
+      <!-- Search results details container starts here -->
+      <div class="page__details-result">
+        <dl class="details-list" aria-live="polite">
+          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+            <dt class="details-list__item-name">IP Address</dt>
+            <dd class="details-list__item-value" data-output="ipAddress"></dd>
+          </div>
+          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+            <dt class="details-list__item-name">Location</dt>
+            <dd class="details-list__item-value" data-output="location"></dd>
+          </div>
+          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
+            <dt class="details-list__item-name">Timezone</dt>
+            <dd class="details-list__item-value" data-output="timezone"></dd>
+          </div>
+          <div class="details-list__item">
+            <dt class="details-list__item-name">ISP</dt>
+            <dd class="details-list__item-value" data-output="isp"></dd>
+          </div>
+        </dl>
+      </div>
+      <!-- Search results details container ends here -->
+      <!-- Map container-->
+      <div id="map" class="page__map-result" aria-live="polite"></div>
     </main>
+    <!-- Main content ends here -->
+    <!-- Footer content starts here -->
     <footer class="page__footer">
-      <p class="page__footer-paragraph">Challenge by <a class="page__footer-link"
+      <p class="page__footer-paragraph--has-margin-right">Challenge by <a class="page__footer-link"
           href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer external">Frontend
-          Mentor</a>. Coded by <a class="page__footer-link" href="https://mrgeminus.com/" target="_blank"
+          Mentor</a>.</p>
+      <p>Coded by <a class="page__footer-link" href="https://mrgeminus.com/" target="_blank"
           rel="noopener noreferrer author external">MrGeminus</a>.</p>
     </footer>
+    <!-- Footer content ends here -->
   </div>
   <!-- Imports custom script -->
-  <script type="module" src="ts/script.ts"></script>
-  <noscript>Please enable JavaScript!</noscript>
+  <script type="module" src="ts/main.ts"></script>
+  <!-- If JavaScript is disabled or not supported, displays this message -->
+  <noscript>This app requires JavaScript. Please enable it and/or use a browser that supports it!</noscript>
 </body>

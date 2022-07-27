@@ -53,28 +53,23 @@ Users should be able to:
 
 ### What I learned
 
-To see how you can add code snippets, see below:
+I learned a lot of things while working on this project.
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+
 ```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+
 ```
 
 ### Continued development
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Sass Guidelines](https://sass-guidelin.es/#architecture) - The sass guidelines helped me get a general idea of how to organize my SCSS files and folders.
+- [Accessible Search Form](https://www.a11ymatters.com/pattern/accessible-search/) - This article explores how to make search forms more accessible to disabled people.
+- [Netlify Serverless Functions with TypeScript](https://docs.netlify.com/functions/build-with-typescript/) - Netlify serverless functions are a great way to hide your private API keys.
+- [Font Awesome](https://fontawesome.com/icons) - Font Awesome has an extensive collection of icons.
 
 ## Author
 

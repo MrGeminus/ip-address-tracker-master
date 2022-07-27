@@ -20,7 +20,7 @@ map.doubleClickZoom.disable();
 map.scrollWheelZoom.disable();
 map.boxZoom.disable();
 map.keyboard.disable();
-// Change the default marker icon options
+// Marker icon options
 const locationIcon = L.icon({
     iconUrl: `${new URL('../assets/img/icon-location.svg', import.meta.url)}`,
     iconSize: [35, 45],
@@ -28,10 +28,12 @@ const locationIcon = L.icon({
 });
 // Creating the marker
 const mapMarker = L.marker([0, 0], { icon: locationIcon });
+// Map tile layer options
 const mapTiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
 mapTiles.addTo(map);
+// Function that gets the location and displays it
 const getUserLocation = async (query: string): Promise<void> => {
     try {
         const { data }: AxiosResponse<IpifyResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
@@ -54,15 +56,19 @@ const getUserLocation = async (query: string): Promise<void> => {
         setTimeout(removeInvalidStyles, 5000);
     }
 };
-
+// Function that removes invalid styling from the search input
 const removeInvalidStyles = () => {
-    searchInput.classList.remove('search-form__input--is-invalid');
-    inputError.classList.add('search-form__error--is-hidden');
+    if (searchInput.classList.contains('search-form__input--is-invalid')) {
+        searchInput.classList.remove('search-form__input--is-invalid');
+    }
+    if (inputError.classList.contains('search-form__error--is-hidden')) {
+        inputError.classList.add('search-form__error--is-hidden');
+    }
     searchInput.setAttribute('aria-invalid', 'false');
     inputError.setAttribute('aria-live', 'off');
 }
-
-const getSearchInputValue = (e: Event) => {
+// Function to handle the form submission
+const getSearchInputValue = (e: Event): void => {
     // Preventing the default behavior of the form
     e.preventDefault();
     let query: string
@@ -73,7 +79,7 @@ const getSearchInputValue = (e: Event) => {
         inputError.textContent = 'This field is required';
         searchInput.setAttribute('aria-invalid', 'true');
         inputError.setAttribute('aria-live', 'assertive');
-        setTimeout(removeInvalidStyles, 5000);
+        setTimeout(removeInvalidStyles, 7000);
     }
     else if (/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/.test(searchInputValue)) {
         query = `ipAddress=${searchInputValue}`;
@@ -89,9 +95,13 @@ const getSearchInputValue = (e: Event) => {
         inputError.textContent = 'Please enter a valid IP address or domain name';
         searchInput.setAttribute('aria-invalid', 'true');
         inputError.setAttribute('aria-live', 'assertive');
-        setTimeout(removeInvalidStyles, 5000);
+        setTimeout(removeInvalidStyles, 7000);
     }
 }
 // Listening for the submit event on the search form
 searchForm.addEventListener('submit', getSearchInputValue);
+// Listening for the key press event on the search input
 searchInput.addEventListener('keydown', removeInvalidStyles);
+// On page load, get the user's location by leaving ipAddress parameter empty
+document.addEventListener('DOMContentLoaded', () => getUserLocation('ipAddress='));
+

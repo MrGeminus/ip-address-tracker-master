@@ -1,7 +1,11 @@
-@use '../abstracts/breakpoints' as b;
+// -----------------------------------------------------------------------------
+// This file contains all application-wide scss mixins.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/breakpoints' as *;
 
 @mixin breakpoint($value) {
-    @media (min-width: map-get(b.$breakpoints, $value)) {
+    @media (min-width: map-get($breakpoints, $value)) {
         @content;
     }
 }
