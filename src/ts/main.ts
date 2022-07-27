@@ -38,7 +38,6 @@ const getUserLocation = async (query: string): Promise<void> => {
     try {
         const { data }: AxiosResponse<IpifyDetailedResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
         // Using the flyTo method to animate to the targeted location
-        console.log(data);
         map.flyTo([data.location.lat, data.location.lng], 16);
         // Changing the marker position to the new location and adding it to the map
         mapMarker.setLatLng([data.location.lat, data.location.lng]).addTo(map);
@@ -105,7 +104,11 @@ searchInput.addEventListener('keydown', removeInvalidStyles);
 // Show the user's IP address on the initial page load
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json');
+        const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json', {
+            headers: {
+                'Access-Control-Allow-Origin': 'https://mrgeminus-ip-address-tracker-master.netlify.app/'
+            }
+        });
         getUserLocation(`ipAddress=${data.ip}`)
     }
     catch (error) {
