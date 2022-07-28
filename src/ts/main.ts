@@ -8,6 +8,7 @@ import { IpifyDetailedResponse, IpifySimpleResponse } from './interfaces';
 
 const searchForm = document.querySelector('[data-search-form]') as HTMLFormElement;
 const searchInput = document.querySelector('[data-search-input]') as HTMLInputElement;
+const searchButton = document.querySelector('[data-search-button]') as HTMLButtonElement;
 const errorMessage = document.querySelector('[data-error-message]') as HTMLParagraphElement;
 const ipOutput = document.querySelector('[data-item-value=ipAddress]') as HTMLDListElement;
 const locationOutput = document.querySelector('[data-item-value=location]') as HTMLDListElement;
@@ -36,19 +37,31 @@ const mapTiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
 
-// Function that gets the location and displays it
+// Adding the map tile layer to the map
 
-const getUserLocation = async (query: string): Promise<void> => {
+mapTiles.addTo(map);
+
+// Function that displays the gotten data on the page
+
+const displaySearchResults = (data: IpifyDetailedResponse): void => {
+    // Using the flyTo method to animate to the targeted location
+    map.flyTo([data.location.lat, data.location.lng], 16);
+    // Changing the marker position to the new location and adding it to the map
+    mapMarker.setLatLng([data.location.lat, data.location.lng]).addTo(map);
+    // Changing the text content of the dd elements in the description list
+    ipOutput.textContent = data.ip;
+    locationOutput.textContent = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
+    timezoneOutput.textContent = `UTC ${data.location.timezone}`;
+    ispOutput.textContent = data.isp;
+}
+
+// Function that talks to Netlify serverless function to get information about the user's public IP address
+
+const getPublicIPInformation = async (query: string): Promise<void> => {
     try {
         const { data }: AxiosResponse<IpifyDetailedResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
-        // Using the flyTo method to animate to the targeted location
-        map.flyTo([data.location.lat, data.location.lng], 16);
-        // Changing the marker position to the new location and adding it to the map
-        mapMarker.setLatLng([data.location.lat, data.location.lng]).addTo(map);
-        ipOutput.textContent = data.ip;
-        locationOutput.textContent = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
-        timezoneOutput.textContent = `UTC ${data.location.timezone}`;
-        ispOutput.textContent = data.isp;
+        console.log(data);
+        displaySearchResults(data);
     }
     catch (error) {
         console.log(error);
@@ -64,6 +77,7 @@ const addInvalidStyling = (errorText: string): void => {
     errorMessage.textContent = errorText;
     searchInput.setAttribute('aria-invalid', 'true');
     errorMessage.setAttribute('aria-live', 'assertive');
+    searchButton.setAttribute('disabled', 'true');
 }
 
 // Function that removes invalid styling from form elements and deletes the error message
@@ -75,6 +89,7 @@ const removeInvalidStyling = () => {
     errorMessage.classList.add('search-form__error-message--is-hidden');
     searchInput.setAttribute('aria-invalid', 'false');
     errorMessage.setAttribute('aria-live', 'off');
+    searchButton.removeAttribute('disabled');
 }
 
 // Function to handle the form submission
@@ -82,15 +97,14 @@ const removeInvalidStyling = () => {
 const handleFormSubmission = (e: Event): void => {
     // Preventing the default behavior of the form
     e.preventDefault();
-    let query: string
+    // Getting the value of the input field
     const searchInputValue = searchInput.value.trim();
+    // Checking if the value is a valid IP address or domain name
     if (/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/.test(searchInputValue)) {
-        query = `ipAddress=${searchInputValue}`;
-        getUserLocation(query);
+        getPublicIPInformation(`ipAddress=${searchInputValue}`);
     }
     else if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(searchInputValue)) {
-        query = `domain=${searchInputValue}`;
-        getUserLocation(query);
+        getPublicIPInformation(`domain=${searchInputValue}`);
     }
     else {
         addInvalidStyling('Please enter a valid IP address or domain');
@@ -101,12 +115,12 @@ const handleFormSubmission = (e: Event): void => {
 
 const getUserPublicIp = async (): Promise<void> => {
     try {
-        mapTiles.addTo(map);
         const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json');
-        getUserLocation(`ipAddress=${data.ip}`)
+        getPublicIPInformation(`ipAddress=${data.ip}`)
     }
     catch (error) {
-        searchForm.setAttribute('disabled', 'true');
+        searchInput.setAttribute('disabled', 'true');
+        searchButton.setAttribute('disabled', 'true');
         alert('Please disable adblocker and try again!');
     }
 }
