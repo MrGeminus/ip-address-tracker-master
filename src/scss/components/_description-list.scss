@@ -70,6 +70,13 @@
         }
     }
 
+    // Styling for abbreviations inside dt elements.
+
+    &__item-abbreviation {
+        text-decoration: none;
+        cursor: help;
+    }
+
     // Styling for the dd element
 
     &__item-value {
