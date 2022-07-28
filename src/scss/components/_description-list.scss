@@ -1,7 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the description list component.
+// -----------------------------------------------------------------------------
+
+// Importing mixins and color variables
+
 @use '../abstracts/mixins' as *;
 @use '../abstracts/colors' as *;
 
-.details-list {
+// Styles for the description list
+
+.description-list {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -18,15 +26,14 @@
         text-align: left;
     }
 
+    // Styling for description list items
+
     &__item {
         flex-basis: 100%;
         padding: 0rem 1.5rem;
-
-        @include breakpoint(large) {
-            flex-grow: 1;
-            margin-top: -0.45rem;
-        }
     }
+
+    // A class that adds additional padding to the bottom part of the description list items on small screens
 
     &__item--has-padding-bottom {
         padding-bottom: 1.5rem;
@@ -36,13 +43,18 @@
         }
     }
 
+    // A class that adds a border on the right side that of the description list items on large screens
+
     &__item--has-right-border {
+        border-right: none;
 
         @include breakpoint(large) {
             border-right: 0.1rem solid lighten($color: $secondary-color, $amount: 29%);
             ;
         }
     }
+
+    // Styling for the dt element
 
     &__item-name {
         margin-top: 0rem;
@@ -57,6 +69,8 @@
             margin-top: -0.45rem;
         }
     }
+
+    // Styling for the dd element
 
     &__item-value {
         min-height: 1.15rem;

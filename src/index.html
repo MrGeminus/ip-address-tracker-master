@@ -37,18 +37,28 @@
       <!-- Site heading -->
       <h1 class="page__title">IP Address Tracker</h1>
       <!-- Search form starts here -->
+      <!-- Data attribute is used to select this element in JavaScript -->
       <form class="search-form" data-search-form>
-        <div class="search-form__input-group">
+        <!-- Input group containing label, input, and button element starts here -->
+        <div class="search-form__input-group" role="search">
+          <!-- Visually hidden label for the search input -->
           <label class="visually-hidden" for="search-input">Search for any IP address or domain:</label>
           <!-- Search input -->
+          <!-- Data attribute is used to select this element in JavaScript -->
+          <!-- Aria-invalid attribute can be set to true via JavaScript to inform a disabled user that the input is invalid -->
+          <!-- Aria-errormessage attribute establishes a connection between the corresponding input and error message -->
           <input id="search-input" class="search-form__input" type="search" name="search"
             placeholder="Search for any IP address or domain" data-search-input aria-invalid="false"
-            aria-errormessage="error-message">
+            aria-errormessage="error-message" />
           <!-- Search button -->
           <button class="button search-form__button" type="submit"><span class="visually-hidden">Search</span></button>
         </div>
-        <!-- Error messages about invalid entries are displayed here -->
-        <p id="error-message" class="search-form__error search-form__error--is-hidden" data-input-error aria-live="off">
+        <!-- Input group ends here -->
+        <!-- Error messages about invalid entries will be injected here -->
+        <!-- Data attribute is used to select this element in JavaScript -->
+        <!-- Aria-live attribute will be set to assertive to inform a disabled user that the content of this element has changed -->
+        <p id="error-message" class="search-form__error-message search-form__error-message--is-hidden"
+          data-error-message aria-live="off">
         </p>
       </form>
       <!-- Search form ends here -->
@@ -58,30 +68,51 @@
     <main class="page__main">
       <!-- Site subheading -->
       <h2 class="visually-hidden">Search results</h2>
-      <!-- Search results details container starts here -->
-      <div class="page__details-result">
-        <dl class="details-list" aria-live="polite">
-          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-            <dt class="details-list__item-name">IP Address</dt>
-            <dd class="details-list__item-value" data-output="ipAddress"></dd>
+      <!-- Description list container starts here -->
+      <div class="page__description-list-container">
+        <!-- Description list containing search result details starts here -->
+        <dl class="description-list">
+          <!-- Item of description list -->
+          <!-- These div elements are used to group the corresponding dt and dd elements -->
+          <div
+            class="description-list__item description-list__item--has-padding-bottom description-list__item--has-right-border">
+            <!-- Term which will be described by the injected value bellow -->
+            <dt class="description-list__item-name">IP Address</dt>
+            <!-- Place where IP address will be injected -->
+            <!-- Aria-live attribute will politely inform a disabled user that the content of this element has changed -->
+            <!-- Data attribute is used to select this element in JavaScript -->
+            <dd class="description-list__item-value" data-item-value="ipAddress" aria-live="polite"></dd>
           </div>
-          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-            <dt class="details-list__item-name">Location</dt>
-            <dd class="details-list__item-value" data-output="location"></dd>
+          <!-- Item of description list -->
+          <div
+            class="description-list__item description-list__item--has-padding-bottom description-list__item--has-right-border">
+            <!-- Term which will be described by the injected value bellow -->
+            <dt class="description-list__item-name">Location</dt>
+            <!-- Place where location information will be injected -->
+            <dd class="description-list__item-value" data-item-value="location" aria-live="polite"></dd>
           </div>
-          <div class="details-list__item details-list__item--has-padding-bottom details-list__item--has-right-border">
-            <dt class="details-list__item-name">Timezone</dt>
-            <dd class="details-list__item-value" data-output="timezone"></dd>
+          <!-- Item of description list -->
+          <div
+            class="description-list__item description-list__item--has-padding-bottom description-list__item--has-right-border">
+            <!-- Term which will be described by the injected value bellow -->
+            <dt class="description-list__item-name">Timezone</dt>
+            <!-- Place where timezone information will be injected -->
+            <dd class="description-list__item-value" data-item-value="timezone" aria-live="polite"></dd>
           </div>
-          <div class="details-list__item">
-            <dt class="details-list__item-name">ISP</dt>
-            <dd class="details-list__item-value" data-output="isp"></dd>
+          <!-- Item of description list -->
+          <div class="description-list__item">
+            <!-- Term which will be described by the injected value bellow -->
+            <dt class="description-list__item-name">ISP</dt>
+            <!-- Place where isp name will be injected -->
+            <dd class="description-list__item-value" data-item-value="isp" aria-live="polite"></dd>
           </div>
         </dl>
+        <!-- Description list ends here -->
       </div>
+      <!-- Description list container ends here -->
       <!-- Search results details container ends here -->
       <!-- Map container-->
-      <div id="map" class="page__map-result" aria-live="polite"></div>
+      <div id="map" class="page__map-container" aria-live="polite"></div>
     </main>
     <!-- Main content ends here -->
     <!-- Footer content starts here -->

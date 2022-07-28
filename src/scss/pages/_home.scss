@@ -10,6 +10,8 @@
     display: flex;
     flex-direction: column;
 
+    // Styling for page header.
+
     &__header {
         display: flex;
         flex-direction: column;
@@ -26,6 +28,8 @@
         }
     }
 
+    // Styling for the page heading.
+
     &__title {
         margin-top: 1.5rem;
         color: $primary-color;
@@ -35,13 +39,17 @@
         text-align: center;
     }
 
+    // Styling for main element.
+
     &__main {
         position: relative;
         display: flex;
         flex-grow: 1;
     }
 
-    &__details-result {
+    // Styles for the description list container.
+
+    &__description-list-container {
         position: absolute;
         top: -9.1rem;
         left: 0;
@@ -56,11 +64,15 @@
         }
     }
 
-    &__map-result {
+    // Styles for the map container.
+
+    &__map-container {
         flex-grow: 1;
         min-height: 30rem;
         z-index: 1;
     }
+
+    // Styles for the page footer.
 
     &__footer {
         display: flex;
@@ -81,6 +93,8 @@
         }
     }
 
+    // A class that adds a small margin to the right side of the first paragraph on screens bigger than 27rem.
+
     &__footer-paragraph--has-margin-right {
         margin-right: 0;
 
@@ -88,6 +102,8 @@
             margin-right: 0.25rem;
         }
     }
+
+    // Styles for the footer links.
 
     &__footer-link {
         color: $primary-color;

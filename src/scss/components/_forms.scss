@@ -1,3 +1,9 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the form component.
+// -----------------------------------------------------------------------------
+
+// Importing color variables
+
 @use '../abstracts/colors' as *;
 
 .search-form {
@@ -12,10 +18,12 @@
         max-width: 35rem;
     }
 
+    // Styling for the input element.
+
     &__input {
         width: 100%;
         padding: 0.7rem 1.5rem 0.7rem 1.5rem;
-        border: 0.1rem solid $primary-color;
+        border: 0.15rem solid $primary-color;
         border-top-left-radius: 0.7rem;
         border-bottom-left-radius: 0.7rem;
         margin-top: 1.5rem;
@@ -29,13 +37,17 @@
         }
     }
 
+    // A class that will be applied to the input element to signalize that the entry is invalid.
+
     &__input--is-invalid {
-        border: 0.1rem solid $accent-secondary;
+        border: 0.15rem solid $accent-secondary;
     }
+
+    // Styling for the search button.
 
     &__button {
         width: 3.7rem;
-        height: 2.9rem;
+        height: 3rem;
         border-top-right-radius: 0.7rem;
         border-bottom-right-radius: 0.7rem;
         margin-top: 1.5rem;
@@ -47,12 +59,16 @@
 
     }
 
+    // On hover change the cursor style and background color of the button.
+
     &__button:hover {
         background-color: lighten($color: $accent-primary, $amount: 9%);
         cursor: pointer
     }
 
-    &__error {
+    // Styling for the p element where the error messages will be injected.
+
+    &__error-message {
         display: block;
         width: 100%;
         max-width: 35rem;
@@ -71,7 +87,9 @@
         z-index: 3;
     }
 
-    &__error--is-hidden {
+    // A class that will be applied to the p element to show or hide the error message.
+
+    &__error-message--is-hidden {
         display: none;
     }
 }
