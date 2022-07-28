@@ -94,17 +94,17 @@ const removeInvalidStyling = () => {
 
 // Function to handle the form submission
 
-const handleFormSubmission = (e: Event): void => {
+const handleFormSubmission = async (e: Event): Promise<void> => {
     // Preventing the default behavior of the form
     e.preventDefault();
     // Getting the value of the input field
     const searchInputValue = searchInput.value.trim();
     // Checking if the value is a valid IP address or domain name
     if (/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/.test(searchInputValue)) {
-        getPublicIPInformation(`ipAddress=${searchInputValue}`);
+        await getPublicIPInformation(`ipAddress=${searchInputValue}`);
     }
     else if (/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/.test(searchInputValue)) {
-        getPublicIPInformation(`domain=${searchInputValue}`);
+        await getPublicIPInformation(`domain=${searchInputValue}`);
     }
     else {
         addInvalidStyling('Please enter a valid IP address or domain');
@@ -116,7 +116,7 @@ const handleFormSubmission = (e: Event): void => {
 const getUserPublicIp = async (): Promise<void> => {
     try {
         const { data }: AxiosResponse<IpifySimpleResponse> = await axios('https://api.ipify.org/?format=json');
-        getPublicIPInformation(`ipAddress=${data.ip}`)
+        await getPublicIPInformation(`ipAddress=${data.ip}`)
     }
     catch (error) {
         searchInput.setAttribute('disabled', 'true');
@@ -127,13 +127,13 @@ const getUserPublicIp = async (): Promise<void> => {
 
 // Listening for the submit event on the search form
 
-searchForm.addEventListener('submit', handleFormSubmission);
+searchForm.addEventListener('submit', () => handleFormSubmission);
 
 // Listening for the key press event on the search input
 
-searchInput.addEventListener('keydown', removeInvalidStyling);
+searchInput.addEventListener('keydown', () => removeInvalidStyling);
 
 // On the initial page load get user's public IP address to show his location on the map
 
-document.addEventListener('DOMContentLoaded', getUserPublicIp);
+document.addEventListener('DOMContentLoaded', () => getUserPublicIp);
 
