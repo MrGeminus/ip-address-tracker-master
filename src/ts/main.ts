@@ -54,6 +54,7 @@ const getUserLocation = async (query: string): Promise<void> => {
 const addInvalidStyling = (errorText: string): void => {
     searchInput.classList.add('search-form__input--is-invalid');
     errorMessage.classList.remove('search-form__error-message--is-hidden');
+    errorMessage.classList.add('search-form__error-message--is-visible');
     errorMessage.textContent = errorText;
     searchInput.setAttribute('aria-invalid', 'true');
     errorMessage.setAttribute('aria-live', 'assertive');
@@ -62,6 +63,7 @@ const addInvalidStyling = (errorText: string): void => {
 const removeInvalidStyling = () => {
     errorMessage.textContent = '';
     searchInput.classList.remove('search-form__input--is-invalid');
+    errorMessage.classList.remove('search-form__error-message--is-visible');
     errorMessage.classList.add('search-form__error-message--is-hidden');
     searchInput.setAttribute('aria-invalid', 'false');
     errorMessage.setAttribute('aria-live', 'off');
