@@ -58,7 +58,7 @@
 
     &__item-name {
         margin-top: 0rem;
-        color: $secondary-color;
+        color: darken($color: $secondary-color, $amount: 15%);
         font-size: 0.7rem;
         font-weight: 500;
         font-family: 'Rubik';

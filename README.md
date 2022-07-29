@@ -49,25 +49,27 @@ Users should be able to:
 - Ipify
 - Axios
 - Parcel
-- Netlify
+- ESLint
+- Netlify Serverless Functions
 
 ### What I learned
 
 I learned a lot of things while working on this project.
 
-```html
+The most challenging parts were how to type-check the Leaflet library and configure ESLint for usage with TypeScript and Parcel bundler.
 
-```
-```js
-
-```
+Although, making the app accessible was also quite challenging.
 
 ### Continued development
+
+Besides continuing to improve the accessibility of my websites, I also plan to use ESlint more in the future.
 
 ### Useful resources
 
 - [Sass Guidelines](https://sass-guidelin.es/#architecture) - The sass guidelines helped me get a general idea of how to organize my SCSS files and folders.
-- [Accessible Search Form](https://www.a11ymatters.com/pattern/accessible-search/) - This article explores how to make search forms more accessible to disabled people.
+- [Accessible Search Forms](https://www.a11ymatters.com/pattern/accessible-search/) - This article explores how to make search forms more accessible to disabled people.
+- [Leaflet's Guide on Accessible Maps](https://leafletjs.com/examples/accessibility/) - In this guide, you can read Leaflet's suggestions on how to make maps more accessible.
+- [Accessibility Testing Tools](https://www.w3.org/WAI/ER/tools/) - Here you can find a list of tools that you can use to check how accessible your website is.
 - [Netlify Serverless Functions with TypeScript](https://docs.netlify.com/functions/build-with-typescript/) - Netlify serverless functions are a great way to hide your private API keys.
 - [Font Awesome](https://fontawesome.com/icons) - Font Awesome has an extensive collection of icons.
 

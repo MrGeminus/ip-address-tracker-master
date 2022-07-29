@@ -29,7 +29,7 @@ const locationIcon = L.icon({
 
 // Creating the marker
 
-const mapMarker = L.marker([0, 0], { icon: locationIcon });
+
 
 // Instantiating tile layer
 
@@ -47,7 +47,8 @@ const displaySearchResults = (data: IpifyDetailedResponse): void => {
     // Using the flyTo method to animate to the targeted location
     map.flyTo([data.location.lat, data.location.lng], 16);
     // Changing the marker position to the new location and adding it to the map
-    mapMarker.setLatLng([data.location.lat, data.location.lng]).addTo(map);
+    const mapMarker = L.marker([data.location.lat, data.location.lng], { icon: locationIcon, alt: `${data.location.city}, ${data.location.country}` });
+    mapMarker.addTo(map);
     // Changing the text content of the dd elements in the description list
     ipOutput.textContent = data.ip;
     locationOutput.textContent = `${data.location.city}, ${data.location.country} ${data.location.postalCode}`;
@@ -127,13 +128,13 @@ const getUserPublicIp = async (): Promise<void> => {
 
 // Listening for the submit event on the search form
 
-searchForm.addEventListener('submit', () => handleFormSubmission);
+searchForm.addEventListener('submit', (e: Event) => handleFormSubmission(e));
 
 // Listening for the key press event on the search input
 
-searchInput.addEventListener('keydown', () => removeInvalidStyling);
+searchInput.addEventListener('keydown', () => removeInvalidStyling());
 
 // On the initial page load get user's public IP address to show his location on the map
 
-document.addEventListener('DOMContentLoaded', () => getUserPublicIp);
+document.addEventListener('DOMContentLoaded', () => getUserPublicIp());
 
