@@ -18,10 +18,12 @@
         align-items: center;
         height: 18.25rem;
         padding: 0 1.5rem;
+        background-color: rgba(21, 21, 85, 0.315);
         background-image: url(../assets/img/pattern-bg.png);
         background-position: center;
-        background-repeat: no-repeat;
         background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
 
         @include breakpoint(large) {
             height: 13.5rem;
@@ -84,9 +86,11 @@
         font-weight: 400;
         font-family: 'Rubik';
         text-align: center;
+        background-color: rgba(21, 21, 85, 0.315);
         background-image: url(../assets/img/pattern-bg.png);
         background-repeat: no-repeat;
         background-size: cover;
+        background-blend-mode: overlay;
 
         @include breakpoint(small) {
             flex-direction: row;
@@ -110,8 +114,13 @@
         text-decoration: underline;
 
         &:hover {
-            color: $accent-primary;
+            color: darken($color: $primary-color, $amount: 30%);
             text-decoration: none;
+        }
+
+        &:focus {
+            text-decoration: none;
+            outline: 0.15rem solid $primary-color;
         }
     }
 }

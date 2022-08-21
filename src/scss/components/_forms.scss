@@ -35,13 +35,19 @@
         &:hover {
             cursor: pointer
         }
+
+        &:focus {
+            outline: 0.2rem solid $accent-primary;
+        }
+
+        // A class that will be applied to the input element to signalize that the entry is invalid.
+
+        &--is-invalid {
+            border: 0.15rem solid $accent-secondary;
+        }
     }
 
-    // A class that will be applied to the input element to signalize that the entry is invalid.
 
-    &__input--is-invalid {
-        border: 0.15rem solid $accent-secondary;
-    }
 
     // Styling for the search button.
 
@@ -57,13 +63,16 @@
         background-size: 0.6rem;
         background-position: center;
 
-    }
+        // On hover change the cursor style and background color of the button.
 
-    // On hover change the cursor style and background color of the button.
+        &:hover {
+            background-color: lighten($color: $accent-primary, $amount: 9%);
+            cursor: pointer
+        }
 
-    &__button:hover {
-        background-color: lighten($color: $accent-primary, $amount: 9%);
-        cursor: pointer
+        &:focus {
+            outline: 0.2rem solid $primary-color;
+        }
     }
 
     // Styling for the p element where the error messages will be injected.
@@ -87,17 +96,19 @@
         opacity: 0;
         z-index: 3;
         transition: opacity .15s ease-in-out;
-    }
 
-    // A class that helps transition in the error message.
 
-    &__error-message--is-visible {
-        opacity: 1;
-    }
+        // A class that helps transition in the error message.
 
-    // A class that will be applied to the p element to show or hide the error message.
+        &--is-visible {
+            opacity: 1;
+        }
 
-    &__error-message--is-hidden {
-        visibility: hidden;
+        // A class that will be applied to the p element to show or hide the error message.
+
+        &--is-hidden {
+            visibility: hidden;
+        }
+
     }
 }

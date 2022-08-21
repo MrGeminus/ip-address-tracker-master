@@ -34,7 +34,7 @@ const locationIcon = L.icon({
 // Instantiating tile layer
 
 const mapTiles = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a class="map-container__attribution" href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
 
 // Adding the map tile layer to the map
@@ -61,7 +61,6 @@ const displaySearchResults = (data: IpifyDetailedResponse): void => {
 const getPublicIPInformation = async (query: string): Promise<void> => {
     try {
         const { data }: AxiosResponse<IpifyDetailedResponse> = await axios(`/.netlify/functions/ipify?query=${query}`);
-        console.log(data);
         displaySearchResults(data);
     }
     catch (error) {
